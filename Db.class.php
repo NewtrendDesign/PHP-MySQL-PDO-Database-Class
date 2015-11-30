@@ -94,7 +94,7 @@ class DB
 	 		# if MySQL server has gone away or bConnected is false
 	 		# http://www.php.net/manual/zh/pdo.getattribute.php
 
-			$status = $pdo->getAttribute(PDO::ATTR_SERVER_INFO);
+			$status = $this->pdo->getAttribute(PDO::ATTR_SERVER_INFO);
 			
 			if(($status == 'MySQL server has gone away')||(!$this->bConnected))
 			{
