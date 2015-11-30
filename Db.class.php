@@ -85,6 +85,23 @@ class DB
 	 		# http://www.php.net/manual/en/pdo.connections.php
 	 		$this->pdo = null;
 	 	}
+	/*
+	 *   You can use this little method if you want to reconnect the PDO connection
+	 *
+	 */
+	 	public function ReConnect()
+	 	{
+	 		# if MySQL server has gone away or bConnected is false
+	 		# http://www.php.net/manual/zh/pdo.getattribute.php
+
+			$status = $pdo->getAttribute(PDO::ATTR_SERVER_INFO);
+			
+			if(($status == 'MySQL server has gone away')||(!$this->bConnected))
+			{
+				/* 进行PDO连接 */
+				$this->Connect(); 
+			}
+	 	}
 		
        /**
 	*	Every method which needs to execute a SQL query uses this method.
